@@ -4,7 +4,17 @@ export default function Footer() {
       <p className="mb-2 uppercase tracking-widest font-bold">
         62 Moons © 2026 | Chicago, IL
       </p>
-      <p>Nate • Tommy • Martin</p>
+      <p>
+        Designed and built by{" "}
+        <a
+          href="https://mattdowneydev.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-red-500 underline"
+        >
+          Matt Downey
+        </a>
+      </p>
     </footer>
   );
 }
