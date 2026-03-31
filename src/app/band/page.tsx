@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function BandPage() {
@@ -36,13 +37,15 @@ export default function BandPage() {
       <nav className="border-b border-red-900 bg-black sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-3xl font-black text-red-600 tracking-tight">
-                62
-              </span>
-              <span className="text-2xl font-black text-yellow-500 tracking-wider">
-                MOONS
-              </span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/62moonslogo.png"
+                alt="62 Moons Band Logo"
+                width={120}
+                height={60}
+                className="h-14 w-auto"
+                priority
+              />
             </Link>
 
             {/* Desktop Menu */}
