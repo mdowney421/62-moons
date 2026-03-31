@@ -1,12 +1,10 @@
 "use client";
 
+import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
 
 export default function BandPage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const members = [
     {
       name: "Nate",
@@ -33,92 +31,7 @@ export default function BandPage() {
 
   return (
     <div className="bg-black text-white min-h-screen flex flex-col">
-      {/* Navigation */}
-      <nav className="border-b border-red-900 bg-black sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/62moonslogo.png"
-                alt="62 Moons Band Logo"
-                width={120}
-                height={60}
-                className="h-14 w-auto"
-                priority
-              />
-            </Link>
-
-            {/* Desktop Menu */}
-            <div className="hidden md:flex gap-8">
-              <Link
-                href="/"
-                className="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-red-500 transition"
-              >
-                Home
-              </Link>
-              <Link
-                href="/band"
-                className="text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-500 transition"
-              >
-                The Band
-              </Link>
-              <Link
-                href="/contact"
-                className="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-red-500 transition"
-              >
-                Contact
-              </Link>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden text-red-500 hover:text-red-500"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
-
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden pb-4 border-t border-red-900">
-              <Link
-                href="/"
-                className="block py-2 text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-red-500"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                href="/band"
-                className="block py-2 text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-500"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                The Band
-              </Link>
-              <Link
-                href="/contact"
-                className="block py-2 text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-red-500"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Contact
-              </Link>
-            </div>
-          )}
-        </div>
-      </nav>
+      <NavBar />
 
       {/* Page Header */}
       <section className="py-16 px-4 border-b border-red-900 bg-zinc-900">
@@ -201,13 +114,7 @@ export default function BandPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black border-t border-red-900 py-8 px-4 text-center text-gray-500 text-sm">
-        <p className="mb-2 uppercase tracking-widest font-bold">
-          62 Moons © 2026 | Chicago, IL
-        </p>
-        <p>Nate • Tommy • Martin</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
