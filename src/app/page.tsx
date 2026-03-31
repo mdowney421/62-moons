@@ -1,6 +1,7 @@
-'use client';
+"use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
@@ -12,20 +13,22 @@ export default function Home() {
       <nav className="border-b border-red-900 bg-black sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-3xl font-black text-red-600 tracking-tight">
-                62
-              </span>
-              <span className="text-2xl font-black text-yellow-400 tracking-wider">
-                MOONS
-              </span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/62moonslogo.png"
+                alt="62 Moons Band Logo"
+                width={120}
+                height={60}
+                className="h-14 w-auto"
+                priority
+              />
             </Link>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex gap-8">
               <Link
                 href="/"
-                className="text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-400 transition"
+                className="text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-500 transition"
               >
                 Home
               </Link>
@@ -45,7 +48,7 @@ export default function Home() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-red-500 hover:text-red-400"
+              className="md:hidden text-red-500 hover:text-red-500"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <svg
@@ -69,7 +72,7 @@ export default function Home() {
             <div className="md:hidden pb-4 border-t border-red-900">
               <Link
                 href="/"
-                className="block py-2 text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-400"
+                className="block py-2 text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-500"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
@@ -101,18 +104,22 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <h1 className="text-6xl sm:text-7xl md:text-8xl font-black mb-6 tracking-tighter">
-            <span className="block text-red-600 drop-shadow-lg">62</span>
-            <span className="block text-yellow-400 drop-shadow-lg">MOONS</span>
-          </h1>
+          <Image
+            src="/62moonslogo.png"
+            alt="62 Moons Band Logo"
+            width={500}
+            height={500}
+            priority
+            className="w-full max-w-sm md:max-w-lg mx-auto mb-6"
+          />
 
           <p className="text-xl sm:text-2xl text-gray-300 mb-4 font-bold tracking-widest uppercase">
             Heavy Metal From Chicago
           </p>
 
           <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Raw power. Crushing riffs. Thunderous drums. Three musicians. One mission.
-            Experience the sonic devastation of 62 Moons.
+            Raw power. Crushing riffs. Thunderous drums. Three musicians. One
+            mission. Experience the sonic devastation of 62 Moons.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -124,7 +131,7 @@ export default function Home() {
             </Link>
             <Link
               href="/contact"
-              className="px-8 py-4 border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-black uppercase tracking-widest transition text-lg"
+              className="px-8 py-4 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black font-black uppercase tracking-widest transition text-lg"
             >
               Get in Touch
             </Link>
@@ -142,7 +149,7 @@ export default function Home() {
             </div>
           </div>
           <div className="text-center border-l border-r border-red-900 px-4">
-            <div className="text-4xl font-black text-yellow-400 mb-2">🌙</div>
+            <div className="text-4xl font-black text-yellow-500 mb-2">🌙</div>
             <div className="text-gray-300 font-bold uppercase tracking-widest">
               Pure Heavy Metal
             </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function BandPage() {
@@ -36,13 +37,15 @@ export default function BandPage() {
       <nav className="border-b border-red-900 bg-black sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-3xl font-black text-red-600 tracking-tight">
-                62
-              </span>
-              <span className="text-2xl font-black text-yellow-400 tracking-wider">
-                MOONS
-              </span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/62moonslogo.png"
+                alt="62 Moons Band Logo"
+                width={120}
+                height={60}
+                className="h-14 w-auto"
+                priority
+              />
             </Link>
 
             {/* Desktop Menu */}
@@ -55,7 +58,7 @@ export default function BandPage() {
               </Link>
               <Link
                 href="/band"
-                className="text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-400 transition"
+                className="text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-500 transition"
               >
                 The Band
               </Link>
@@ -69,7 +72,7 @@ export default function BandPage() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-red-500 hover:text-red-400"
+              className="md:hidden text-red-500 hover:text-red-500"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <svg
@@ -100,7 +103,7 @@ export default function BandPage() {
               </Link>
               <Link
                 href="/band"
-                className="block py-2 text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-400"
+                className="block py-2 text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-500"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 The Band
@@ -141,14 +144,14 @@ export default function BandPage() {
                   className={`absolute -inset-1 bg-gradient-to-r ${
                     member.color === "red"
                       ? "from-red-600 to-red-800"
-                      : "from-yellow-400 to-yellow-600"
+                      : "from-yellow-500 to-yellow-600"
                   } opacity-25 group-hover:opacity-75 blur transition duration-300`}
                 ></div>
 
                 <div className="relative bg-black p-8 border border-gray-800 hover:border-red-600 transition">
                   <div
                     className={`w-20 h-20 rounded-full ${
-                      member.color === "red" ? "bg-red-600" : "bg-yellow-400"
+                      member.color === "red" ? "bg-red-600" : "bg-yellow-500"
                     } mb-6 flex items-center justify-center`}
                   >
                     <span className="text-3xl font-black text-black">
@@ -164,7 +167,7 @@ export default function BandPage() {
                     className={`font-bold uppercase tracking-widest mb-4 ${
                       member.color === "red"
                         ? "text-red-500"
-                        : "text-yellow-400"
+                        : "text-yellow-500"
                     }`}
                   >
                     {member.role}
