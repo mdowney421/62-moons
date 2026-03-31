@@ -39,7 +39,7 @@ export default function ContactPage() {
               <span className="text-3xl font-black text-red-600 tracking-tight">
                 62
               </span>
-              <span className="text-2xl font-black text-yellow-400 tracking-wider">
+              <span className="text-2xl font-black text-yellow-500 tracking-wider">
                 MOONS
               </span>
             </Link>
@@ -60,7 +60,7 @@ export default function ContactPage() {
               </Link>
               <Link
                 href="/contact"
-                className="text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-400 transition"
+                className="text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-500 transition"
               >
                 Contact
               </Link>
@@ -68,7 +68,7 @@ export default function ContactPage() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-red-500 hover:text-red-400"
+              className="md:hidden text-red-500 hover:text-red-500"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <svg
@@ -106,7 +106,7 @@ export default function ContactPage() {
               </Link>
               <Link
                 href="/contact"
-                className="block py-2 text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-400"
+                className="block py-2 text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-500"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
@@ -136,7 +136,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="text-3xl font-black text-yellow-400 mb-8">
+              <h2 className="text-3xl font-black text-yellow-500 mb-8">
                 Send a Message
               </h2>
 
@@ -218,7 +218,7 @@ export default function ContactPage() {
 
             {/* Contact Info */}
             <div>
-              <h2 className="text-3xl font-black text-yellow-400 mb-8">
+              <h2 className="text-3xl font-black text-yellow-500 mb-8">
                 Contact Info
               </h2>
 
@@ -234,8 +234,8 @@ export default function ContactPage() {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-yellow-400 pl-6">
-                  <h3 className="font-bold uppercase tracking-widest text-yellow-400 mb-2">
+                <div className="border-l-4 border-yellow-500 pl-6">
+                  <h3 className="font-bold uppercase tracking-widest text-yellow-500 mb-2">
                     Email
                   </h3>
                   <p className="text-gray-300">
