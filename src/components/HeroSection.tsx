@@ -10,8 +10,8 @@ export default function HeroSection() {
 
       <div className="absolute inset-0 opacity-30">
         <Image
-          src="/bandpicture1.png"
-          alt="62 Moons Band"
+          src="/heroimage.png"
+          alt="62 Moons Band Image"
           fill
           className="object-cover object-top"
           priority
@@ -25,8 +25,17 @@ export default function HeroSection() {
           width={500}
           height={500}
           priority
-          className="w-full max-w-sm md:max-w-lg mx-auto mb-6 mt-72"
+          className="w-full max-w-sm md:max-w-lg mx-auto mb-6"
         />
+
+        <p className="text-xl sm:text-2xl text-gray-300 mb-4 font-bold tracking-widest uppercase">
+          Heavy Metal From Chicago
+        </p>
+
+        <p className="text-lg text-gray-400 mb-4 max-w-2xl mx-auto leading-relaxed">
+          Raw power. Crushing riffs. Thunderous drums. Three musicians. One
+          mission. Experience the sonic devastation of 62 Moons.
+        </p>
       </div>
     </section>
   );
