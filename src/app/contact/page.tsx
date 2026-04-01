@@ -22,13 +22,33 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // In a real app, you'd send this data somewhere
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setTimeout(() => setSubmitted(false), 5000);
+
+    try {
+      const response = await fetch("/api", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: `Subject: ${formData.subject}\n\n${formData.message}`,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("Oops, something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -159,10 +179,10 @@ export default function ContactPage() {
                   </h3>
                   <p className="text-gray-300">
                     <a
-                      href="mailto:contact@62moons.com"
+                      href="mailto:62moons1@gmail.com"
                       className="hover:text-red-500 transition"
                     >
-                      contact@62moons.com
+                      62moons1@gmail.com
                     </a>
                   </p>
                 </div>
