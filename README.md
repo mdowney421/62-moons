@@ -1,59 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 62 Moons Band Website
 
-## Getting Started
+A production-ready marketing site and lightweight content management workflow for the band 62 Moons.
 
-First, run the development server:
+This project is intentionally built to demonstrate practical full-stack engineering in a portfolio context: modern frontend architecture, server-side integrations, authenticated admin tooling, and real-world deployment concerns.
+
+## Project Goals
+
+- Present a high-quality public-facing band website with a custom visual style.
+- Allow non-technical band members to manage upcoming shows without touching code.
+- Keep operational overhead low by using GitHub as the source of truth for show data.
+- Support production analytics and performance observability on Vercel.
+
+## Tech Stack
+
+- Framework: Next.js 16 (App Router)
+- Language: TypeScript
+- UI: React 19 + Tailwind CSS 4
+- Auth: NextAuth (credentials-based admin login)
+- Email: Resend API (contact form delivery)
+- Data Source: JSON file committed back to GitHub via GitHub Contents API
+- Observability: Vercel Analytics + Vercel Speed Insights
+- Tooling: ESLint, strict TypeScript config
+
+## Architecture Highlights
+
+### Public Site
+
+- Route-driven pages under `src/app/`.
+- Reusable UI components under `src/components/`.
+- Upcoming shows rendered from `src/app/data/upcoming-shows.json`.
+- Shows are normalized and sorted by date using shared domain logic in `src/types/show.ts`.
+
+### Admin CMS Workflow
+
+- Protected admin interface at `/admin`.
+- Authenticated users can add/remove show entries in a dedicated editor UI.
+- Publish action writes the updated JSON file directly to GitHub using:
+  - `GET /repos/{owner}/{repo}/contents/{path}` to fetch current SHA
+  - `PUT /repos/{owner}/{repo}/contents/{path}` to commit new content
+- This creates a lightweight, auditable CMS flow without introducing a separate database.
+
+### Security Model
+
+- Admin route requires an authenticated session.
+- Server actions also verify session state before mutation (defense in depth).
+- Admin credentials and API tokens are stored in environment variables.
+- Timing-safe credential comparison is used in auth configuration.
+
+### Contact Form Integration
+
+- Contact submissions are handled in `src/app/api/route.ts`.
+- Backend sends formatted emails via Resend.
+- Email body separates subject context, sender metadata, and message content for readability.
+
+### Performance + Monitoring
+
+- `@vercel/analytics` and `@vercel/speed-insights` are mounted globally in `src/app/layout.tsx`.
+- Supports real-user traffic analytics and Core Web Vitals visibility in production.
+
+## Local Development
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Create a local environment file:
+
+```bash
+cp .env.example .env.local
+```
+
+3. Start the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Visit:
 
-## Admin Setup
+- Public site: http://localhost:3000
+- Admin login: http://localhost:3000/admin/login
 
-The `/admin` page is protected with NextAuth credentials login and publishes upcoming show changes to GitHub.
+## Environment Variables
 
-1. Copy `.env.example` to `.env.local`.
-2. Fill in all values:
-   - `GITHUB_TOKEN` (fine-grained token with repository Contents read/write)
-   - `GITHUB_OWNER`
-   - `GITHUB_REPO`
-   - `GITHUB_BRANCH`
-   - `GITHUB_SHOWS_PATH`
-   - `NEXTAUTH_SECRET`
-   - `ADMIN_USERNAME`
-   - `ADMIN_PASSWORD`
-3. Restart the dev server.
-4. Open `/admin/login` and sign in with `ADMIN_USERNAME` / `ADMIN_PASSWORD`.
+### Admin Authentication
 
-Generate `NEXTAUTH_SECRET` with:
+- `NEXTAUTH_SECRET` (generate with `openssl rand -base64 32`)
+- `ADMIN_USERNAME`
+- `ADMIN_PASSWORD`
 
-```bash
-openssl rand -base64 32
-```
+### GitHub Content Publishing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `GITHUB_TOKEN` (fine-grained PAT with Contents read/write)
+- `GITHUB_OWNER`
+- `GITHUB_REPO`
+- `GITHUB_BRANCH` (default: `main`)
+- `GITHUB_SHOWS_PATH` (default: `src/app/data/upcoming-shows.json`)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Contact Email
 
-## Learn More
+- `RESEND_API_KEY`
 
-To learn more about Next.js, take a look at the following resources:
+## NPM Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev` - start local dev server
+- `npm run build` - create production build
+- `npm run start` - start production server
+- `npm run lint` - run ESLint
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Why This Project Is Portfolio-Relevant
 
-## Deploy on Vercel
+- Demonstrates end-to-end ownership across frontend, backend integrations, and deployment.
+- Uses modern React/Next.js patterns (App Router, server actions, typed domain models).
+- Balances product simplicity with operational realism (auth, secure env handling, observability, and third-party APIs).
+- Shows practical architectural decision-making: using GitHub-backed content updates as an intentional alternative to a full CMS/database.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Deploy target: Vercel.
+- Configure the same environment variables in Vercel Project Settings.
+- Rotate secrets/tokens when shared accidentally.
+- Verify analytics and speed insights after first production traffic.
