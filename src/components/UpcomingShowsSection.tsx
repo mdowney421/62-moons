@@ -19,12 +19,20 @@ export default function UpcomingShowsSection() {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
                   <div className="text-xl font-bold text-yellow-500 mb-2">
-                    {new Date(show.date).toLocaleDateString("en-US", {
-                      weekday: "long",
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
+                    {(() => {
+                      const [year, month, day] = show.date
+                        .split("-")
+                        .map(Number);
+                      return new Date(year, month - 1, day).toLocaleDateString(
+                        "en-US",
+                        {
+                          weekday: "long",
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        },
+                      );
+                    })()}
                   </div>
                   <div className="text-lg text-white font-semibold mb-1">
                     {show.venue}
