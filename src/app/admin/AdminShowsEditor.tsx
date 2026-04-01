@@ -24,6 +24,7 @@ const EMPTY_SHOW: Show = {
   location: "",
   address: "",
   time: "",
+  comments: "",
 };
 
 export default function AdminShowsEditor({
@@ -61,6 +62,15 @@ export default function AdminShowsEditor({
   function deleteShow(index: number) {
     setShows((current) =>
       current.filter((_, currentIndex) => currentIndex !== index),
+    );
+    setStatus(null);
+  }
+
+  function updateShow(index: number, updates: Partial<Show>) {
+    setShows((current) =>
+      current.map((show, currentIndex) =>
+        currentIndex === index ? { ...show, ...updates } : show,
+      ),
     );
     setStatus(null);
   }
@@ -133,6 +143,18 @@ export default function AdminShowsEditor({
               }
               className="rounded border border-zinc-700 bg-black px-3 py-2 md:col-span-2"
             />
+            <textarea
+              placeholder="Comments / Notes (optional)"
+              value={newShow.comments ?? ""}
+              onChange={(event) =>
+                setNewShow((prev) => ({
+                  ...prev,
+                  comments: event.target.value,
+                }))
+              }
+              className="rounded border border-zinc-700 bg-black px-3 py-2 md:col-span-2"
+              rows={3}
+            />
           </div>
 
           <button
@@ -156,24 +178,73 @@ export default function AdminShowsEditor({
               sortedShows.map(({ show, index }) => (
                 <div
                   key={`${show.date}-${show.venue}-${index}`}
-                  className="flex flex-col justify-between gap-3 rounded border border-zinc-800 bg-black p-4 md:flex-row md:items-center"
+                  className="rounded border border-zinc-800 bg-black p-4"
                 >
-                  <div>
-                    <p className="font-bold text-white">
-                      {show.date} | {show.time}
-                    </p>
-                    <p className="text-zinc-300">
-                      {show.venue} - {show.location}
-                    </p>
-                    <p className="text-sm text-zinc-400">{show.address}</p>
+                  <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                    <input
+                      type="date"
+                      value={show.date}
+                      onChange={(event) =>
+                        updateShow(index, { date: event.target.value })
+                      }
+                      className="rounded border border-zinc-700 bg-zinc-950 px-3 py-2"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Time"
+                      value={show.time}
+                      onChange={(event) =>
+                        updateShow(index, { time: event.target.value })
+                      }
+                      className="rounded border border-zinc-700 bg-zinc-950 px-3 py-2"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Venue"
+                      value={show.venue}
+                      onChange={(event) =>
+                        updateShow(index, { venue: event.target.value })
+                      }
+                      className="rounded border border-zinc-700 bg-zinc-950 px-3 py-2"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Location"
+                      value={show.location}
+                      onChange={(event) =>
+                        updateShow(index, { location: event.target.value })
+                      }
+                      className="rounded border border-zinc-700 bg-zinc-950 px-3 py-2"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Street Address"
+                      value={show.address}
+                      onChange={(event) =>
+                        updateShow(index, { address: event.target.value })
+                      }
+                      className="rounded border border-zinc-700 bg-zinc-950 px-3 py-2 md:col-span-2"
+                    />
+                    <textarea
+                      placeholder="Comments / Notes (optional)"
+                      value={show.comments ?? ""}
+                      onChange={(event) =>
+                        updateShow(index, { comments: event.target.value })
+                      }
+                      className="rounded border border-zinc-700 bg-zinc-950 px-3 py-2 md:col-span-2"
+                      rows={3}
+                    />
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => deleteShow(index)}
-                    className="rounded border border-red-700 px-3 py-2 text-sm font-semibold text-red-400 hover:bg-red-950"
-                  >
-                    Delete
-                  </button>
+
+                  <div className="mt-3 flex justify-end">
+                    <button
+                      type="button"
+                      onClick={() => deleteShow(index)}
+                      className="rounded border border-red-700 px-3 py-2 text-sm font-semibold text-red-400 hover:bg-red-950"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
               ))
             )}

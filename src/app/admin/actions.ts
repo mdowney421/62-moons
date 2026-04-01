@@ -42,6 +42,10 @@ function validateShows(shows: Show[]): void {
     ) {
       throw new Error(`Show at index ${index} includes blank values.`);
     }
+
+    if (show.comments !== undefined && typeof show.comments !== "string") {
+      throw new Error(`Show at index ${index} has invalid comments.`);
+    }
   }
 }
 

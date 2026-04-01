@@ -4,6 +4,7 @@ export type Show = {
   location: string;
   address: string;
   time: string;
+  comments?: string;
 };
 
 export function isValidShow(candidate: unknown): candidate is Show {
@@ -18,7 +19,8 @@ export function isValidShow(candidate: unknown): candidate is Show {
     typeof show.venue === "string" &&
     typeof show.location === "string" &&
     typeof show.address === "string" &&
-    typeof show.time === "string"
+    typeof show.time === "string" &&
+    (typeof show.comments === "string" || typeof show.comments === "undefined")
   );
 }
 

@@ -30,6 +30,14 @@ export default function UpcomingShowsSection() {
                     {show.venue}
                   </div>
                   <div className="text-gray-400">{show.location}</div>
+                  {show.comments?.trim() ? (
+                    <div className="mt-3 rounded border border-zinc-700 bg-zinc-900/60 p-3 text-sm text-zinc-300">
+                      <span className="mr-1 font-semibold text-yellow-500">
+                        Comments:
+                      </span>
+                      {show.comments}
+                    </div>
+                  ) : null}
                 </div>
                 <div className="mt-4 md:mt-0 flex flex-col items-end">
                   <div className="text-lg text-red-600 font-bold mb-2">
