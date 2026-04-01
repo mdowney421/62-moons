@@ -1,4 +1,6 @@
-export default function SocialMediaSection() {
+import Link from "next/link";
+
+export default function CallToActionSection() {
   const platforms = [
     {
       name: "Facebook",
@@ -29,6 +31,31 @@ export default function SocialMediaSection() {
   return (
     <section className="bg-black border-b border-red-900 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8">
+          <p className="text-xl sm:text-2xl text-gray-300 mb-4 font-bold tracking-widest uppercase">
+            Heavy Metal From Chicago
+          </p>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            Raw power. Crushing riffs. Thunderous drums. Three musicians. One
+            mission. Experience the sonic devastation of 62 Moons.
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+          <Link
+            href="/band"
+            className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-black uppercase tracking-widest transition transform hover:scale-105 text-lg text-center"
+          >
+            Meet the Band
+          </Link>
+          <Link
+            href="/contact"
+            className="px-8 py-4 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black font-black uppercase tracking-widest transition text-lg text-center"
+          >
+            Get in Touch
+          </Link>
+        </div>
+
         <div className="text-center mb-8">
           <h2 className="text-xl font-bold uppercase tracking-widest text-gray-300 mb-4">
             Follow Us
