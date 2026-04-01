@@ -1,5 +1,6 @@
 "use server";
 
+import { getServerAuthSession } from "@/auth";
 import { isValidShow, sortShowsBySoonest, type Show } from "@/types/show";
 
 type SaveState = {
@@ -69,6 +70,14 @@ async function getExistingFileSha(
 
 export async function saveShowsToGitHub(shows: Show[]): Promise<SaveState> {
   try {
+    const session = await getServerAuthSession();
+    if (!session?.user) {
+      return {
+        ok: false,
+        message: "Unauthorized. Please sign in again.",
+      };
+    }
+
     validateShows(shows);
     const sortedShows = sortShowsBySoonest(shows);
 
