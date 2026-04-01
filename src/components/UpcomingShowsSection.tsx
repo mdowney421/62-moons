@@ -1,6 +1,9 @@
 import upcomingShows from "../app/data/upcoming-shows.json";
+import { sortShowsBySoonest } from "@/types/show";
 
 export default function UpcomingShowsSection() {
+  const sortedShows = sortShowsBySoonest(upcomingShows);
+
   return (
     <section className="py-16 px-4 bg-zinc-800">
       <div className="max-w-4xl mx-auto">
@@ -8,7 +11,7 @@ export default function UpcomingShowsSection() {
           Upcoming Shows
         </h2>
         <div className="space-y-6">
-          {upcomingShows.map((show, index) => (
+          {sortedShows.map((show, index) => (
             <div
               key={index}
               className="bg-black p-6 rounded-lg border border-red-900 hover:border-red-600 transition"
