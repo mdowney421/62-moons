@@ -175,20 +175,6 @@ export default function ContactPage() {
 
                 <div className="border-l-4 border-yellow-500 pl-6">
                   <h3 className="font-bold uppercase tracking-widest text-yellow-500 mb-2">
-                    Email
-                  </h3>
-                  <p className="text-gray-300">
-                    <a
-                      href="mailto:62moons1@gmail.com"
-                      className="hover:text-red-500 transition"
-                    >
-                      62moons1@gmail.com
-                    </a>
-                  </p>
-                </div>
-
-                <div className="border-l-4 border-red-600 pl-6">
-                  <h3 className="font-bold uppercase tracking-widest text-red-500 mb-2">
                     The Members
                   </h3>
                   <p className="text-gray-300">
