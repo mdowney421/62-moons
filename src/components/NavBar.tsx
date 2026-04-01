@@ -47,6 +47,7 @@ export default function NavBar() {
             ))}
           </div>
 
+          {/* Mobile Menu Button */}
           <button
             className="md:hidden text-red-500 hover:text-red-500"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
