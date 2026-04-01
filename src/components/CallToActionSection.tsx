@@ -3,6 +3,12 @@ import Link from "next/link";
 export default function CallToActionSection() {
   const platforms = [
     {
+      name: "Instagram",
+      href: "https://www.instagram.com/62moonsband/",
+      icon: "/instagram.svg",
+      hoverColor: "#E1306C",
+    },
+    {
       name: "Facebook",
       href: "https://facebook.com/61584281717707/",
       icon: "/facebook.svg",
