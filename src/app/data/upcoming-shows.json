@@ -1,0 +1,23 @@
+[
+    {
+        "date": "2024-04-15",
+        "venue": "The Underground",
+        "location": "Chicago, IL",
+        "address": "1234 W Division St, Chicago, IL 60622",
+        "time": "8:00 PM"
+    },
+    {
+        "date": "2024-05-20",
+        "venue": "Metal Fest Arena",
+        "location": "Milwaukee, WI",
+        "address": "456 E Wisconsin Ave, Milwaukee, WI 53202",
+        "time": "9:00 PM"
+    },
+    {
+        "date": "2024-06-10",
+        "venue": "Rock House",
+        "location": "Detroit, MI",
+        "address": "789 Woodward Ave, Detroit, MI 48226",
+        "time": "7:30 PM"
+    }
+]
