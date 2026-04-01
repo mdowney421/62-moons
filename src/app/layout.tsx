@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "62 Moons | Metal Band",
   description:
     "62 Moons - Heavy metal from Chicago. Nate, Tommy, and Martin delivering crushing riffs and thunderous drums.",
+  icons: {
+    icon: "/62moonslogo.png",
+  },
 };
 
 export default function RootLayout({
