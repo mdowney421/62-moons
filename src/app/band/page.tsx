@@ -3,6 +3,7 @@
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function BandPage() {
   const members = [
@@ -44,6 +45,24 @@ export default function BandPage() {
             member brings their own crushing style and technical prowess to
             create the devastating sound of 62 Moons.
           </p>
+        </div>
+      </section>
+
+      {/* Band Photo */}
+      <section className="py-8 px-4 bg-black relative overflow-hidden">
+        <div className="max-w-7xl mx-auto relative">
+          <Image
+            src="/bandpicture2.png"
+            alt="62 Moons Band"
+            width={1200}
+            height={600}
+            className="w-full rounded-lg"
+            priority
+          />
+          <div className="absolute inset-0 opacity-20 rounded-lg pointer-events-none">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-red-700 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-yellow-600 rounded-full blur-3xl"></div>
+          </div>
         </div>
       </section>
 
