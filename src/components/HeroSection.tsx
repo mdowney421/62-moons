@@ -9,6 +9,16 @@ export default function HeroSection() {
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-yellow-600 rounded-full blur-3xl"></div>
       </div>
 
+      <div className="absolute inset-0 opacity-30">
+        <Image
+          src="/bandpicture1.png"
+          alt="62 Moons Band"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
       <div className="relative z-10 text-center max-w-4xl mx-auto">
         <Image
           src="/62moonslogo.png"
