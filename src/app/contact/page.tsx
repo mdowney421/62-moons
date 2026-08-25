@@ -182,7 +182,7 @@ export default function ContactPage() {
                     <br />
                     Tommy - Guitar
                     <br />
-                    Martin - Drums
+                    Pilot Pete - Drums
                   </p>
                 </div>
 
