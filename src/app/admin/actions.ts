@@ -46,6 +46,14 @@ function validateShows(shows: Show[]): void {
     if (show.comments !== undefined && typeof show.comments !== "string") {
       throw new Error(`Show at index ${index} has invalid comments.`);
     }
+
+    if (show.link !== undefined && show.link.trim()) {
+      try {
+        new URL(show.link.trim());
+      } catch {
+        throw new Error(`Show at index ${index} has an invalid link URL.`);
+      }
+    }
   }
 }
 

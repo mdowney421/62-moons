@@ -53,6 +53,16 @@ export default function UpcomingShowsSection() {
                       {show.comments}
                     </div>
                   ) : null}
+                  {show.link?.trim() ? (
+                    <a
+                      href={show.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-block font-semibold text-red-500 underline hover:text-red-400"
+                    >
+                      Tickets / More Info
+                    </a>
+                  ) : null}
                 </div>
                 <div className="mt-4 md:mt-0 flex flex-col items-end">
                   <div className="text-lg text-red-600 font-bold mb-2">
