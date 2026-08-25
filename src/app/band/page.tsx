@@ -22,10 +22,10 @@ export default function BandPage() {
       color: "yellow",
     },
     {
-      name: "Martin",
+      name: "Pilot Pete",
       role: "Drums",
       description:
-        "The pulse of the band. Martin's precise yet punishing drumming provides the driving force behind every track, keeping everything locked and heavy.",
+        "The pulse of the band. Pete's precise yet punishing drumming provides the driving force behind every track, keeping everything locked and heavy.",
       color: "red",
     },
   ];

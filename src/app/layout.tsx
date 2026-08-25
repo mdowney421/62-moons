@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "62 Moons | Metal Band",
   description:
-    "62 Moons - Heavy metal from Chicago. Nate, Tommy, and Martin delivering crushing riffs and thunderous drums.",
+    "62 Moons - Heavy metal from Chicago. Nate, Tommy, and Pilot Pete delivering crushing riffs and thunderous drums.",
   icons: {
     icon: "/62moonslogo.png",
   },
