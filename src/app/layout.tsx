@@ -5,6 +5,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import CookieConsentBanner from "../components/CookieConsentBanner";
+import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/site";
+import { SOCIAL_LINKS } from "@/lib/social-links";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,12 +19,49 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "62 Moons | Metal Band",
-  description:
-    "62 Moons - Heavy metal from Chicago. Nate, Tommy, and Pilot Pete delivering crushing riffs and thunderous drums.",
-  icons: {
-    icon: "/62moonslogo.png",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    images: ["/heroimage.png"],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: ["/heroimage.png"],
+  },
+};
+
+const musicGroupJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  name: SITE_NAME,
+  url: SITE_URL,
+  image: `${SITE_URL}/62moonslogo.png`,
+  genre: "Heavy Metal",
+  foundingLocation: {
+    "@type": "Place",
+    name: "Chicago, Illinois",
+  },
+  member: [
+    { "@type": "Person", name: "Nate" },
+    { "@type": "Person", name: "Tommy" },
+    { "@type": "Person", name: "Pilot Pete" },
+  ],
+  sameAs: SOCIAL_LINKS.map((link) => link.href),
 };
 
 export default function RootLayout({
@@ -36,6 +75,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(musicGroupJsonLd) }}
+        />
         <Script id="gtag-consent-default" strategy="beforeInteractive">
           {`window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

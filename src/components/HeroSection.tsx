@@ -28,9 +28,9 @@ export default function HeroSection() {
           className="w-full max-w-sm md:max-w-lg mx-auto mb-6"
         />
 
-        <p className="text-xl sm:text-2xl text-gray-300 mb-4 font-bold tracking-widest uppercase">
-          Heavy Metal From Chicago
-        </p>
+        <h1 className="text-xl sm:text-2xl text-gray-300 mb-4 font-bold tracking-widest uppercase">
+          62 Moons — Heavy Metal From Chicago
+        </h1>
 
         <p className="text-lg text-gray-400 mb-4 max-w-2xl mx-auto leading-relaxed">
           Raw power. Crushing riffs. Thunderous drums. Three musicians. One

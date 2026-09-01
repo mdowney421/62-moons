@@ -3,8 +3,11 @@ import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | 62 Moons",
+  title: "Privacy Policy",
   description: "How the 62 Moons site handles cookies and analytics data.",
+  alternates: {
+    canonical: "/privacy",
+  },
 };
 
 export default function PrivacyPage() {

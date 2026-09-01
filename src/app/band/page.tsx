@@ -1,9 +1,17 @@
-"use client";
-
+import type { Metadata } from "next";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "The Band",
+  description:
+    "Meet Nate, Tommy, and Pilot Pete — the three musicians behind 62 Moons' heavy metal sound out of Chicago.",
+  alternates: {
+    canonical: "/band",
+  },
+};
 
 export default function BandPage() {
   const members = [
@@ -69,6 +77,9 @@ export default function BandPage() {
       {/* Band Members */}
       <section className="flex-1 py-16 px-4">
         <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl font-black text-yellow-500 mb-8 uppercase tracking-widest text-center">
+            The Lineup
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {members.map((member, idx) => (
               <div key={idx} className="group relative">

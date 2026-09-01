@@ -1,11 +1,36 @@
 import upcomingShows from "../app/data/upcoming-shows.json";
 import { sortShowsBySoonest } from "@/types/show";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export default function UpcomingShowsSection() {
   const sortedShows = sortShowsBySoonest(upcomingShows);
 
+  const eventsJsonLd = sortedShows.map((show) => ({
+    "@context": "https://schema.org",
+    "@type": "MusicEvent",
+    name: `${SITE_NAME} at ${show.venue}`,
+    startDate: show.date,
+    location: {
+      "@type": "Place",
+      name: show.venue,
+      address: show.address,
+    },
+    performer: {
+      "@type": "MusicGroup",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    ...(show.link?.trim() ? { url: show.link } : {}),
+  }));
+
   return (
     <section className="py-16 px-4 bg-zinc-800">
+      {sortedShows.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventsJsonLd) }}
+        />
+      )}
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-black text-center text-red-600 mb-12 uppercase tracking-widest">
           Upcoming Shows
