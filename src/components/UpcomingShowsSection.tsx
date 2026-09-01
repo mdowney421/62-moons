@@ -32,7 +32,7 @@ export default function UpcomingShowsSection() {
         />
       )}
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-black text-center text-red-600 mb-12 uppercase tracking-widest">
+        <h2 className="font-display text-4xl sm:text-5xl text-center text-red-600 mb-12 uppercase tracking-[0.15em]">
           Upcoming Shows
         </h2>
         {sortedShows.length === 0 ? (
@@ -46,7 +46,7 @@ export default function UpcomingShowsSection() {
           {sortedShows.map((show, index) => (
             <div
               key={index}
-              className="bg-black p-6 rounded-lg border border-red-900 hover:border-red-600 transition"
+              className="bg-black p-6 rounded-lg border border-red-900 hover:border-red-600 transition-all hover:shadow-[0_0_25px_rgba(220,38,38,0.2)]"
             >
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>

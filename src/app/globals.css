@@ -10,6 +10,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-bebas-neue);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +24,174 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+}
+
+/* Subtle grain so black sections read as gritty concrete, not a flat void */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
+@keyframes flicker {
+  0%,
+  92%,
+  100% {
+    opacity: 1;
+  }
+  93%,
+  96% {
+    opacity: 0.85;
+  }
+}
+
+.animate-flicker {
+  animation: flicker 5s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 24s linear infinite;
+}
+
+/* Chromatic-split glitch flicker: set data-text to the same string as the
+   node's content so the ghost layers have something to render. */
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.glitch::before {
+  color: #dc2626;
+  clip-path: polygon(0 3%, 100% 3%, 100% 38%, 0 38%);
+  animation: glitch-1 7s infinite linear;
+}
+
+.glitch::after {
+  color: #eab308;
+  clip-path: polygon(0 62%, 100% 62%, 100% 97%, 0 97%);
+  animation: glitch-2 7s infinite linear;
+}
+
+@keyframes glitch-1 {
+  0%,
+  90%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  91% {
+    transform: translate(-4px, 1px);
+    opacity: 0.8;
+  }
+  93% {
+    transform: translate(4px, -1px);
+    opacity: 0.8;
+  }
+  95% {
+    transform: translate(-2px, 0);
+    opacity: 0.6;
+  }
+  97% {
+    opacity: 0;
+  }
+}
+
+@keyframes glitch-2 {
+  0%,
+  90%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  91% {
+    transform: translate(4px, -1px);
+    opacity: 0.7;
+  }
+  93% {
+    transform: translate(-4px, 1px);
+    opacity: 0.7;
+  }
+  95% {
+    transform: translate(2px, 0);
+    opacity: 0.5;
+  }
+  97% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-glow,
+  .animate-flicker,
+  .animate-fade-up,
+  .animate-marquee,
+  .glitch::before,
+  .glitch::after {
+    animation: none !important;
+  }
+
+  .animate-fade-up {
+    opacity: 1;
+    transform: none;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    display: none;
+  }
 }

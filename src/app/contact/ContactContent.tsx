@@ -2,6 +2,9 @@
 
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import Magnetic from "@/components/Magnetic";
+import Reveal from "@/components/Reveal";
+import Marquee from "@/components/Marquee";
 import { useState } from "react";
 
 export default function ContactContent() {
@@ -52,17 +55,19 @@ export default function ContactContent() {
   return (
     <div className="bg-black text-white min-h-screen flex flex-col">
       <NavBar />
+      <Marquee />
 
       {/* Page Header */}
       <section className="py-16 px-4 border-b border-red-900 bg-zinc-900">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-5xl sm:text-6xl font-black text-red-600 mb-4 tracking-tight">
+          <h1 className="font-display text-6xl sm:text-7xl text-red-600 mb-4 tracking-[0.1em]">
             GET IN TOUCH
           </h1>
           <p className="text-gray-400 text-lg max-w-2xl">
-            Have a show inquiry? Want to collaborate? Just want to say you love
-            heavy metal? Reach out to 62 Moons. We&apos;re always interested in
-            connecting with fans and fellow musicians.
+            Booking a show? Looking to collab? Just want to tell us
+            we&apos;re too loud? Hit send — 62 Moons reads every message,
+            and we&apos;re always down to connect with fans and fellow
+            musicians.
           </p>
         </div>
       </section>
@@ -72,8 +77,8 @@ export default function ContactContent() {
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div>
-              <h2 className="text-3xl font-black text-yellow-500 mb-8">
+            <Reveal>
+              <h2 className="font-display text-4xl text-yellow-500 mb-8 tracking-wide">
                 Send a Message
               </h2>
 
@@ -144,18 +149,21 @@ export default function ContactContent() {
                   ></textarea>
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-black uppercase tracking-widest transition transform hover:scale-105"
-                >
-                  Send Message
-                </button>
+                <Magnetic className="block w-full" strength={24}>
+                  <button
+                    type="submit"
+                    style={{ clipPath: "polygon(2% 0, 100% 0, 98% 100%, 0 100%)" }}
+                    className="w-full px-8 py-4 bg-red-600 hover:bg-red-500 text-white font-black uppercase tracking-widest transition-all hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(220,38,38,0.5)]"
+                  >
+                    Send Message
+                  </button>
+                </Magnetic>
               </form>
-            </div>
+            </Reveal>
 
             {/* Contact Info */}
-            <div>
-              <h2 className="text-3xl font-black text-yellow-500 mb-8">
+            <Reveal delay={150}>
+              <h2 className="font-display text-4xl text-yellow-500 mb-8 tracking-wide">
                 Contact Info
               </h2>
 
@@ -192,7 +200,7 @@ export default function ContactContent() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>

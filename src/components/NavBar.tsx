@@ -16,12 +16,14 @@ export default function NavBar() {
   ];
 
   const getLinkClass = (href: string) =>
-    `text-sm font-bold uppercase tracking-widest transition ${
-      pathname === href ? "text-red-500" : "text-gray-300 hover:text-red-500"
+    `relative text-sm font-bold uppercase tracking-widest transition py-1 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-red-500 after:transition-all after:content-[''] ${
+      pathname === href
+        ? "text-red-500 after:w-full"
+        : "text-gray-300 hover:text-red-500 after:w-0 hover:after:w-full"
     }`;
 
   return (
-    <nav className="border-b border-red-900 bg-black sticky top-0 z-50">
+    <nav className="border-b border-red-900/80 bg-black/85 backdrop-blur-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center">

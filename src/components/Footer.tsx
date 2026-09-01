@@ -15,13 +15,16 @@ export default function Footer() {
           href="https://mattdowneydev.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-400 hover:text-red-500 underline"
+          className="text-gray-500 hover:text-red-500 underline"
         >
-          Matt Downey
+          MD Dev
         </a>
       </p>
       <p className="flex items-center justify-center gap-2 text-xs">
-        <Link href="/privacy" className="text-gray-500 hover:text-red-500 underline">
+        <Link
+          href="/privacy"
+          className="text-gray-500 hover:text-red-500 underline"
+        >
           Privacy policy
         </Link>
         <span aria-hidden="true">·</span>

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Bebas_Neue } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import CookieConsentBanner from "../components/CookieConsentBanner";
+import ScrollProgress from "../components/ScrollProgress";
+import ConsoleEasterEgg from "../components/ConsoleEasterEgg";
 import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/site";
 import { SOCIAL_LINKS } from "@/lib/social-links";
 
@@ -15,6 +17,12 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas-neue",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -72,7 +80,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} h-full antialiased`}
     >
       <head>
         <script
@@ -99,8 +107,10 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="min-h-full flex flex-col">
+        <ScrollProgress />
         {children}
         <CookieConsentBanner />
+        <ConsoleEasterEgg />
         <Analytics />
         <SpeedInsights />
       </body>
